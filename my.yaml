@@ -13,6 +13,27 @@ proxy-providers:
   provider2:
     <<: *p
     url: ""
+ipv6: true
+allow-lan: true
+mixed-port: 7890
+external-controller: 127.0.0.1:9090
+profile:
+  store-selected: true
+  store-fake-ip: true
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "+.local"
+  default-nameserver:
+    - 223.5.5.5
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
 
 proxies:
 - name: "直连"
@@ -63,7 +84,6 @@ rules:
 - RULE-SET,bahamut_domain,巴哈姆特
 - RULE-SET,spotify_domain,Spotify
 - RULE-SET,pixiv_domain,其他
-- RULE-SET,和图书_domain,其它地区
 - RULE-SET,geolocation-!cn,其他
 
 - RULE-SET,google_ip,Google
@@ -108,12 +128,6 @@ rule-providers:
   netflix_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.list"
-  APEX英雄_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/dwbii/openclash-yaml/refs/heads/main/Ruleset/Apex.list"
-  泰坦陨落2_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/dwbii/openclash-yaml/refs/heads/main/Ruleset/TiTanFall2.list"    
   bilibili_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.list"
@@ -126,9 +140,6 @@ rule-providers:
   pixiv_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.list"
-  和图书_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/dwbii/openclash-yaml/refs/heads/main/Ruleset/Other.list"
   geolocation-!cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.list"
