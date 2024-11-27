@@ -30,8 +30,6 @@ proxy-groups:
 - {name: 巴哈姆特, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Bahamut.png"}
 - {name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/YouTube.png"}
 - {name: NETFLIX, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Netflix.png"}
-- {name: APEX英雄, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Netflix.png"}
-- {name: 泰坦陨落2, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Netflix.png"}
 - {name: Spotify, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Spotify.png"}
 - {name: 国内, type: select, proxies: [直连, 默认, 香港, 香港自动选择, 台湾, 台湾自动选择, 日本, 日本自动选择, 新加坡, 新加坡自动选择, 美国, 美国自动选择, 其它地区, 全部节点, 自动选择], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/China_Map.png"}
 - {name: 其他, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Final.png"}
@@ -61,8 +59,6 @@ rules:
 - RULE-SET,google_domain,Google
 - RULE-SET,telegram_domain,Telegram
 - RULE-SET,netflix_domain,NETFLIX
-- RULE-SET,APEX英雄_domain,APEX英雄
-- RULE-SET,泰坦陨落2_domain,泰坦陨落2
 - RULE-SET,bilibili_domain,哔哩哔哩
 - RULE-SET,bahamut_domain,巴哈姆特
 - RULE-SET,spotify_domain,Spotify
