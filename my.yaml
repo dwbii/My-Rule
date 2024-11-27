@@ -84,6 +84,7 @@ rules:
 - RULE-SET,bahamut_domain,巴哈姆特
 - RULE-SET,spotify_domain,Spotify
 - RULE-SET,pixiv_domain,其他
+- RULE-SET,和图书_domain,日本
 - RULE-SET,geolocation-!cn,其他
 
 - RULE-SET,google_ip,Google
@@ -142,7 +143,10 @@ rule-providers:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.list"
   geolocation-!cn:
     <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.list"
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.list"	
+  和图书_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/dwbii/openclash-yaml/refs/heads/main/Ruleset/Other.list	
 
   cn_ip:
     <<: *ip
