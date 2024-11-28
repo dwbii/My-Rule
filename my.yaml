@@ -81,13 +81,13 @@ rules:
 - RULE-SET,google_domain,Google
 - RULE-SET,telegram_domain,Telegram
 - RULE-SET,netflix_domain,NETFLIX
-- RULE-SET,APEX英雄_domain,APEX英雄
 - RULE-SET,bilibili_domain,哔哩哔哩
 - RULE-SET,bahamut_domain,巴哈姆特
 - RULE-SET,spotify_domain,Spotify
 - RULE-SET,pixiv_domain,其他
 - RULE-SET,geolocation-!cn,其他
 
+- RULE-SET,Apex_ip,APEX英雄
 - RULE-SET,google_ip,Google
 - RULE-SET,netflix_ip,NETFLIX
 - RULE-SET,telegram_ip,Telegram
@@ -130,9 +130,6 @@ rule-providers:
   netflix_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.list"
-  APEX英雄_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/dwbii/openclash-yaml/refs/heads/main/Ruleset/Apex_ip.list"
   bilibili_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.list"
@@ -164,3 +161,6 @@ rule-providers:
   telegram_ip:
     <<: *ip
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.list"
+  Apex_ip:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/dwbii/openclash-yaml/refs/heads/main/Ruleset/Apex_ip.list"
