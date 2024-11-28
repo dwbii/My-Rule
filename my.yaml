@@ -132,7 +132,7 @@ rule-providers:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.list"
   APEX英雄_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/dwbii/openclash-yaml/refs/heads/main/Ruleset/Apex.list"
+    url: "https://raw.githubusercontent.com/dwbii/openclash-yaml/refs/heads/main/Ruleset/Apex_ip.list"
   bilibili_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.list"
