@@ -54,6 +54,7 @@ proxy-groups:
 - {name: 巴哈姆特, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Bahamut.png"}
 - {name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/YouTube.png"}
 - {name: NETFLIX, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Netflix.png"}
+- {name: Microsoft,!!merge <<: *pr}
 - {name: EA游戏,!!merge <<: *pr}
 - {name: STEAM游戏,!!merge <<: *pr}
 - {name: APEX英雄,!!merge <<: *pr}
@@ -84,7 +85,9 @@ rules:
 - RULE-SET,twitter_domain,Twitter
 - RULE-SET,youtube_domain,YouTube
 - RULE-SET,google_domain,Google
+- RULE-SET,Microsoft_domain,Microsoft
 - RULE-SET,telegram_domain,Telegram
+- RULE-SET,netflix_ip,NETFLIX
 - RULE-SET,netflix_domain,NETFLIX
 - RULE-SET,EA游戏_domain,EA游戏
 - RULE-SET,STEAM游戏_domain,STEAM游戏
@@ -97,7 +100,6 @@ rules:
 - RULE-SET,geolocation-!cn,默认
 
 - RULE-SET,google_ip,Google
-- RULE-SET,netflix_ip,NETFLIX
 - RULE-SET,telegram_ip,Telegram
 - RULE-SET,twitter_ip,Twitter
 - RULE-SET,cn_domain,国内
@@ -128,6 +130,9 @@ rule-providers:
   twitter_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs"
+  Microsoft_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"
   youtube_domain:
     type: http
     interval: 86400
@@ -149,6 +154,7 @@ rule-providers:
     behavior: domain
     format: mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
+    
   EA游戏_domain:
     type: http
     interval: 86400
