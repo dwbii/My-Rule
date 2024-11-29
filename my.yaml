@@ -86,6 +86,7 @@ rules:
 - RULE-SET,youtube_domain,YouTube
 - RULE-SET,google_domain,Google
 - RULE-SET,Microsoft_domain,Microsoft
+- RULE-SET,Apple_domain,Apple
 - RULE-SET,telegram_domain,Telegram
 - RULE-SET,netflix_ip,NETFLIX
 - RULE-SET,netflix_domain,NETFLIX
@@ -133,6 +134,9 @@ rule-providers:
   Microsoft_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"
+  Apple_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"
   youtube_domain:
     type: http
     interval: 86400
