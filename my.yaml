@@ -64,10 +64,10 @@ proxy-groups:
 - {name: 巴哈姆特, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Bahamut.png"}
 - {name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/YouTube.png"}
 - {name: NETFLIX, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Netflix.png"}
-- {name: Microsoft,!!merge <<: *pr}
-- {name: EA游戏,!!merge <<: *pr}
-- {name: STEAM游戏,!!merge <<: *pr}
-- {name: APEX英雄,!!merge <<: *pr}
+- {name: Microsoft, <<: *pr}
+- {name: EA游戏, <<: *pr}
+- {name: STEAM游戏, <<: *pr}
+- {name: APEX英雄, <<: *pr}
 - {name: Spotify, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Spotify.png"}
 - {name: 国内, type: select, proxies: [直连, 默认, 香港, 香港自动选择, 台湾, 台湾自动选择, 日本, 日本自动选择, 新加坡, 新加坡自动选择, 美国, 美国自动选择, 其它地区, 全部节点, 自动选择], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/China_Map.png"}
 - {name: 其他, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Final.png"}
