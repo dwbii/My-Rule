@@ -99,7 +99,7 @@ rules:
 - RULE-SET,Microsoft_domain,Microsoft
 - RULE-SET,Apple_domain,Apple
 - RULE-SET,telegram_domain,Telegram
-- RULE-SET,netflix_ip,NETFLIX
+- RULE-SET,netflix_ip,NETFLIX,no-resolve
 - RULE-SET,netflix_domain,NETFLIX
 - RULE-SET,EA游戏_domain,EA游戏
 - RULE-SET,STEAM游戏_domain,STEAM游戏
@@ -111,9 +111,9 @@ rules:
 - RULE-SET,pixiv_domain,默认
 - RULE-SET,geolocation-!cn,默认
 
-- RULE-SET,google_ip,Google
-- RULE-SET,telegram_ip,Telegram
-- RULE-SET,twitter_ip,Twitter
+- RULE-SET,google_ip,Google,no-resolve
+- RULE-SET,telegram_ip,Telegram,no-resolve
+- RULE-SET,twitter_ip,Twitter,no-resolve
 - RULE-SET,cn_domain,国内
 - RULE-SET,cn_ip,国内
 - MATCH,其他
