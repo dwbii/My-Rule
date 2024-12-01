@@ -1,5 +1,6 @@
 # NAME: Apex Legends
 IP-CIDR,3.211.230.0/24,no-resolve
+IP-CIDR,13.226.61.0/24,no-resolve
 IP-CIDR,15.185.47.0/24,no-resolve
 IP-CIDR,23.251.100.0/24,no-resolve
 IP-CIDR,34.70.146.0/24,no-resolve
