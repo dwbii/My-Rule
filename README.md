@@ -1,1 +1,1 @@
-# openclash-yaml
+My-Rule
