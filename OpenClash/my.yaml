@@ -33,7 +33,7 @@ dns:
     - "+.lan"
     - "+.local"
   default-nameserver:
-    - 223.5.5.5
+    - 127.0.0.1:5335
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
@@ -53,7 +53,7 @@ proxies:
   type: direct
   udp: true
 proxy-groups:
-- {name: 默认, type: select, proxies: [自动选择, 直连, 香港, 香港自动选择, 台湾, 台湾自动选择, 日本, 日本自动选择, 新加坡, 新加坡自动选择, 美国, 美国自动选择, 其它地区, 全部节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Proxy.png"}
+- {name: 默认, type: select, proxies: [自动选择, 直连, 香港, 香港自动选择, 台湾, 台湾自动选择, 日本, 日本自动选择, 新加坡, 新加坡自动选择, 美国, 美国自动选择, 其它地区,自选节点,全部节点], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Proxy.png"}
 - {name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Google_Search.png"}
 - {name: Apple, <<: *pr, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Apple.png}
 - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Telegram.png"}
@@ -90,7 +90,7 @@ proxy-groups:
 - {name: 新加坡自动选择,type: url-test, include-all: true, filter: "(?i)(新|sg|singapore)", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png"}
 - {name: 游戏专用,type: url-test, include-all: true, filter: "(?i)广港专线", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/HK.png"}
 - {name: 自选节点,type: url-test, include-all: true, filter: "(?i)(新加坡T|新加坡V)", "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png"}
-- {name: 故障转移,type: fallback, include-all: true, filter: ""(?i)(新加坡T|新加坡V)", "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png"}
+- {name: 故障转移,type: fallback, include-all: true, filter: "(?i)(新加坡T|新加坡V)", "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png"}
 
 rules:
 - GEOIP,lan,直连,no-resolve
