@@ -66,9 +66,9 @@ proxy-groups:
 - {name: NETFLIX, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Netflix.png"}
 
 - {name: Microsoft, <<: *pr}
-- {name: EA游戏, <<: *pr}
-- {name: STEAM游戏, <<: *pr}
-- {name: APEX英雄, <<: *pr}
+- {name: EA游戏,  type: select, proxies: [默认,香港,游戏专用], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Final.png"}
+- {name: STEAM游戏, type: select, proxies: [默认,香港,游戏专用], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Final.png"}
+- {name: APEX英雄, type: select, proxies: [香港,游戏专用], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Final.png"}
 
 - {name: Spotify, <<: *pr, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Spotify.png"}
 - {name: 国内, type: select, proxies: [直连, 默认, 香港, 香港自动选择, 台湾, 台湾自动选择, 日本, 日本自动选择, 新加坡, 新加坡自动选择, 美国, 美国自动选择, 其它地区, 全部节点, 自动选择], icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/China_Map.png"}
@@ -88,6 +88,9 @@ proxy-groups:
 - {name: 日本自动选择,type: url-test, include-all: true, filter: "(?i)日|jp|japan", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/JP.png"}
 - {name: 美国自动选择,type: url-test, include-all: true, filter: "(?i)美|us|unitedstates|united states", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/US.png"}
 - {name: 新加坡自动选择,type: url-test, include-all: true, filter: "(?i)(新|sg|singapore)", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png"}
+- {name: 游戏专用,type: url-test, include-all: true, filter: "(?i)广港专线", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/HK.png"}
+- {name: 自选节点,type: url-test, include-all: true, filter: "(?i)(新加坡T|新加坡V)", "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png"}
+- {name: 故障转移,type: fallback, include-all: true, filter: ""(?i)(新加坡T|新加坡V)", "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png"}
 
 rules:
 - GEOIP,lan,直连,no-resolve
@@ -104,10 +107,15 @@ rules:
 - RULE-SET,netflix_ip,NETFLIX,no-resolve
 - RULE-SET,netflix_domain,NETFLIX
 
+- RULE-SET,My dns,故障转移
+- RULE-SET,WeChat,国内
 - RULE-SET,EA游戏_domain,EA游戏
 - RULE-SET,STEAM游戏_domain,STEAM游戏
 - RULE-SET,Nintendo_domain,默认
 - RULE-SET,APEX英雄,APEX英雄
+- RULE-SET,TiTanFall2,APEX英雄
+- RULE-SET,my Direct,国内
+- RULE-SET,my Proxy,台湾
 
 - RULE-SET,bilibili_domain,哔哩哔哩
 - RULE-SET,bahamut_domain,巴哈姆特
@@ -173,7 +181,19 @@ rule-providers:
     behavior: domain
     format: mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
-    
+
+  my Direct:
+    <<: *class
+    url: "https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/Direct.list"
+  my Proxy:
+    <<: *class
+    url: "https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/Proxy.list"
+  My dns:
+    <<: *class
+    url: "https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/Dns.list"
+  WeChat:
+    <<: *class
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/WeChat/WeChat.list"
   EA游戏_domain:
     type: http
     interval: 86400
@@ -181,20 +201,17 @@ rule-providers:
     format: mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ea.mrs"
   STEAM游戏_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
+    <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs"
   Nintendo_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
+    <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/nintendo.mrs"
   APEX英雄:
     <<: *class
     url: "https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/Apex.list"
+  TiTanFall2:
+    <<: *class
+    url: "https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/TiTanFall2.list"
     
   bilibili_domain:
     <<: *domain
@@ -222,10 +239,7 @@ rule-providers:
     format: mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"
   netflix_ip:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
+    <<: *ip
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"
   twitter_ip:
     <<: *ip
