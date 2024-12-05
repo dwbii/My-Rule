@@ -57,7 +57,6 @@ dns:
   enable: true
   ipv6: false
   fake-ip-range: 198.18.0.1/16
-  fake-ip-filter-mode: blacklist
   fake-ip-filter:
   - "*"
   - "+.lan"
@@ -73,13 +72,9 @@ dns:
   - 119.29.29.29
   listen: 0.0.0.0:7874
   enhanced-mode: fake-ip
-  nameserver-policy:
-    "rule-set:private,cn_domain":
-    - 223.5.5.5
-    - 119.29.29.29
-    "rule-set:geolocation-!cn":
-      - "https://dns.cloudflare.com/dns-query"
-      - "https://dns.google/dns-query"
+  fallback:
+  - 1.1.1.1
+  - 1.0.0.1
   
 geodata-mode: false
 geodata-loader: standard
