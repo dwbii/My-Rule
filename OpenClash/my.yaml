@@ -87,7 +87,6 @@ geox-url:
   geosite: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
   mmdb: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
   asn: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb
-
 proxies:
 - name: 直连
   type: direct
@@ -291,7 +290,6 @@ rules:
 - RULE-SET,telegram_domain,Telegram
 - RULE-SET,netflix_ip,NETFLIX,no-resolve
 - RULE-SET,netflix_domain,NETFLIX
-- RULE-SET,My dns,故障转移
 - RULE-SET,WeChat,国内
 - RULE-SET,EA游戏_domain,EA游戏
 - RULE-SET,STEAM游戏_domain,STEAM游戏
@@ -405,12 +403,6 @@ rule-providers:
     behavior: domain
     format: mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs
-  My dns:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/Dns.list
   WeChat:
     type: http
     interval: 86400
