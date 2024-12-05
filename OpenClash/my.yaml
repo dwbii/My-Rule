@@ -33,7 +33,6 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     url: http://192.168.1.2:3001/xxxxxx/download/ssglobal
-    path: ./proxies/ssglobal.yaml
   provider2:
     type: http
     interval: 86400
@@ -46,7 +45,6 @@ proxy-providers:
     interval: 86400
     health-check: *1
     url: http://192.168.1.2:3001/xxxxxx/download/vincentw
-    path: ./proxies/vincentw.yaml
 
 ipv6: false
 allow-lan: true
