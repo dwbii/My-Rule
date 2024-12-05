@@ -64,14 +64,20 @@ dns:
   - "+.lan"
   - "+.local"
   default-nameserver:
-  - 127.0.0.1:5335
+  - 223.5.5.5
+  - 119.29.29.29
+  proxy-server-nameserver:
+  - 223.5.5.5
+  - 119.29.29.29  
   nameserver:
-  - 127.0.0.1:5335
+  - 223.5.5.5
+  - 119.29.29.29
   listen: 0.0.0.0:7874
   enhanced-mode: fake-ip
   fallback:
-  - 127.0.0.1:5335
-
+  - 1.1.1.1
+  - 1.0.0.1
+  
 geodata-mode: false
 geodata-loader: standard
 geo-auto-update: true
@@ -81,7 +87,6 @@ geox-url:
   geosite: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
   mmdb: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
   asn: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb
-  
 proxies:
 - name: 直连
   type: direct
