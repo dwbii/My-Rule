@@ -1,13 +1,4 @@
-DOMAIN-SUFFIX,gateway.ea.com
-DOMAIN-SUFFIX,tnt-ea.com
-DOMAIN-SUFFIX,juno.ea.com
-DOMAIN-SUFFIX,data.ea.com
-DOMAIN-SUFFIX,api.steampowered.com
-DOMAIN-SUFFIX,steamserver.net
-DOMAIN-SUFFIX,epicgames.dev
-DOMAIN-SUFFIX,googleusercontent.com
 DOMAIN-SUFFIX,s3.amazonaws.com
-DOMAIN-SUFFIX,api.ipify.org
 DOMAIN-SUFFIX,stryder.respawn.com
 IP-CIDR,37.27.120.0/24,no-resolve
 IP-CIDR,108.181.244.0/24,no-resolve
