@@ -1,4 +1,5 @@
 DOMAIN-SUFFIX,googleusercontent.com
+DOMAIN-SUFFIX,s3.amazonaws.com
 DOMAIN-SUFFIX,api.ipify.org
 DOMAIN-SUFFIX,stryder.respawn.com
 IP-CIDR,37.27.120.0/24,no-resolve
