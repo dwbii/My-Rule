@@ -50,6 +50,7 @@ IP-CIDR,162.254.199.0/24,no-resolve
 IP-CIDR,173.237.31.0/24,no-resolve
 IP-CIDR,173.237.41.0/24,no-resolve
 IP-CIDR,173.237.51.0/24,no-resolve
+IP-CIDR,173.244.199.0/24,no-resolve
 IP-CIDR,185.25.182.0/24,no-resolve
 IP-CIDR,185.25.183.0/24,no-resolve
 IP-CIDR,188.42.190.0/24,no-resolve
