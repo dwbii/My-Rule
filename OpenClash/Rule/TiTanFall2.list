@@ -1,5 +1,7 @@
 #TiTanFall2,泰坦陨落2
 DOMAIN-SUFFIX,assetsconfigcdn.org
+IP-CIDR,34.85.61.0/24,no-resolve
+IP-CIDR,35.201.19.0/24,no-resolve
 IP-CIDR,35.244.68.0/24,no-resolve
 IP-CIDR,35.247.197.0/24,no-resolve
 IP-CIDR,104.196.209.0/24,no-resolve
