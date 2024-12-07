@@ -2,6 +2,7 @@
 DOMAIN-SUFFIX,assetsconfigcdn.org
 IP-CIDR,35.247.197.0/24,no-resolve
 #
+IP-CIDR,52.59.121.0/24,no-resolve
 IP-CIDR,52.40.240.0/24,no-resolve
 IP-CIDR,61.4.123.0/24,no-resolve
 IP-CIDR,64.95.100.0/24,no-resolve
@@ -11,4 +12,5 @@ IP-CIDR,107.6.141.0/24,no-resolve
 IP-CIDR,107.150.147.0/24,no-resolve
 IP-CIDR,119.42.62.0/24,no-resolve
 IP-CIDR,128.14.101.0/24,no-resolve
+IP-CIDR,148.72.171.0/24,no-resolve
 IP-CIDR,177.54.152.0/24,no-resolve
