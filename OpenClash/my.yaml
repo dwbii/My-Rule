@@ -1,29 +1,4 @@
----
-pr:
-  type: select
-  proxies: &2
-  - 默认
-  - 香港
-  - 香港自动选择
-  - 台湾
-  - 台湾自动选择
-  - 日本
-  - 日本自动选择
-  - 新加坡
-  - 新加坡自动选择
-  - 美国
-  - 美国自动选择
-  - 其它地区
-  - 全部节点
-  - 自动选择
-  - 直连
-p:
-  type: http
-  interval: 86400
-  health-check: &1
-    enable: true
-    url: https://www.gstatic.com/generate_204
-    interval: 300
+# 机场订阅
 proxy-providers:
   provider1:
     type: http
@@ -32,27 +7,48 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    url: http://192.168.1.2:3001/xxxxxx/download/ssglobal
+    url: 订阅地址
   provider2:
     type: http
     interval: 86400
-    health-check: *1
-    url: http://192.168.1.2:3001/xxxxxx/download/CordCloud
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300    
+    url: 订阅地址
     path: ./proxies/CordCloud.yaml
     exclude-filter: "(?i)(上海)|(安徽)|(江苏)"
   provider3:
     type: http
     interval: 86400
-    health-check: *1
-    url: http://192.168.1.2:3001/xxxxxx/download/vincentw
-
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300    
+    url: 订阅地址
+# 全局配置
 ipv6: false
 allow-lan: true
+port: 7890
+socks-port: 7891
+redir-port: 7892
 mixed-port: 7893
+tproxy-port: 7895
 external-controller: 0.0.0.0:9090
 profile:
   store-selected: true
   store-fake-ip: true
+
+geodata-mode: false
+geodata-loader: standard
+geo-auto-update: true
+geo-update-interval: 48
+geox-url:
+  geoip: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
+  geosite: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
+  mmdb: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
+  asn: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb
+# DNS模块
 dns:
   enable: true
   ipv6: false
@@ -66,7 +62,7 @@ dns:
   - 119.29.29.29
   proxy-server-nameserver:
   - 223.5.5.5
-  - 119.29.29.29  
+  - 119.29.29.29
   nameserver:
   - 223.5.5.5
   - 119.29.29.29
@@ -75,123 +71,49 @@ dns:
   fallback:
   - 1.1.1.1
   - 1.0.0.1
-  
-geodata-mode: false
-geodata-loader: standard
-geo-auto-update: true
-geo-update-interval: 48
-geox-url:
-  geoip: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
-  geosite: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
-  mmdb: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
-  asn: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb
+
 proxies:
 - name: 直连
   type: direct
   udp: true
+# 策略组
 proxy-groups:
 - name: 默认
   type: select
-  proxies:
-  - 自动选择
-  - 直连
-  - 香港
-  - 香港自动选择
-  - 台湾
-  - 台湾自动选择
-  - 日本
-  - 日本自动选择
-  - 新加坡
-  - 新加坡自动选择
-  - 美国
-  - 美国自动选择
-  - 其它地区
-  - 全部节点
-  - 自选节点
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Proxy.png
+  proxies: [香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点,直连]
 - name: Google
   type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Google_Search.png
+  proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点]
 - name: Apple
   type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Apple.png
-- name: Telegram
-  type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Telegram.png
-- name: Twitter
-  type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Twitter.png
-- name: ehentai
-  type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Panda.png
+  proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,直连]
 - name: 哔哩哔哩
   type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/bilibili.png
+  proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,直连]
 - name: 哔哩东南亚
   type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/bilibili.png
+  proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,直连]
 - name: 巴哈姆特
   type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Bahamut.png
+  proxies: [台湾,台湾自动选择]
 - name: YouTube
   type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/YouTube.png
+  proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点]
 - name: NETFLIX
   type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Netflix.png
+  proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点]
 - name: Microsoft
   type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Microsoft.png
-- name: EA游戏
+  proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,直连] 
+- name: 游戏平台
   type: select
-  proxies: *2
-- name: STEAM游戏
-  type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png
-- name: APEX英雄
-  type: select
-  proxies:
-  - 香港
-  - 游戏专用
-- name: Spotify
-  type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Spotify.png
+  proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点]
 - name: 国内
   type: select
-  proxies:
-  - 直连
-  - 默认
-  - 香港
-  - 香港自动选择
-  - 台湾
-  - 台湾自动选择
-  - 日本
-  - 日本自动选择
-  - 新加坡
-  - 新加坡自动选择
-  - 美国
-  - 美国自动选择
-  - 其它地区
-  - 全部节点
-  - 自动选择
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/China_Map.png
+  proxies: [直连,默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区]
 - name: 其他
   type: select
-  proxies: *2
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Final.png
+  proxies: [默认,香港,游戏专用,全部节点]
 - name: 香港
   type: select
   include-all: true
@@ -239,7 +161,7 @@ proxy-groups:
 - name: 台湾自动选择
   type: url-test
   include-all: true
-  filter: "(?i)台|tw|taiwan"
+  filter: "(?i)台湾2|台湾4|台湾5|台湾6"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/TW.png
 - name: 日本自动选择
   type: url-test
@@ -272,62 +194,38 @@ proxy-groups:
   filter: "(?i)(新加坡T|新加坡V)"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png
 rules:
-- DST-PORT,7895,REJECT
-- DST-PORT,7892,REJECT
-- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
 - GEOIP,lan,直连,no-resolve
 - RULE-SET,private,直连
 - RULE-SET,biliintl_domain,哔哩东南亚
-- RULE-SET,ehentai_domain,ehentai
+- RULE-SET,ehentai_domain,默认
 - RULE-SET,github_domain,默认
-- RULE-SET,twitter_domain,Twitter
+- RULE-SET,twitter_domain,默认
 - RULE-SET,youtube_domain,YouTube
 - RULE-SET,google_domain,Google
 - RULE-SET,Microsoft_domain,Microsoft
 - RULE-SET,Apple_domain,Apple
-- RULE-SET,telegram_domain,Telegram
-- RULE-SET,netflix_ip,NETFLIX,no-resolve
+- RULE-SET,telegram_domain,默认
+- RULE-SET,netflix_ip,NETFLIX
 - RULE-SET,netflix_domain,NETFLIX
-- RULE-SET,WeChat,国内
-- RULE-SET,EA游戏_domain,EA游戏
-- RULE-SET,STEAM游戏_domain,STEAM游戏
+- RULE-SET,WeChat,直连
+- RULE-SET,EA游戏_domain,游戏平台
+- RULE-SET,EPIC游戏_domain,游戏平台
+- RULE-SET,STEAM游戏_domain,游戏平台
 - RULE-SET,Nintendo_domain,默认
-- RULE-SET,APEX英雄,APEX英雄
-- RULE-SET,TiTanFall2,APEX英雄
 - RULE-SET,my Direct,国内
-- RULE-SET,my Proxy,台湾
+- RULE-SET,my Proxy,巴哈姆特
 - RULE-SET,bilibili_domain,哔哩哔哩
 - RULE-SET,bahamut_domain,巴哈姆特
-- RULE-SET,spotify_domain,Spotify
+- RULE-SET,spotify_domain,默认
 - RULE-SET,pixiv_domain,默认
 - RULE-SET,geolocation-!cn,默认
-- RULE-SET,google_ip,Google,no-resolve
-- RULE-SET,telegram_ip,Telegram,no-resolve
-- RULE-SET,twitter_ip,Twitter,no-resolve
+- RULE-SET,google_ip,Google
+- RULE-SET,telegram_ip,默认
+- RULE-SET,twitter_ip,默认
 - RULE-SET,cn_domain,国内
 - RULE-SET,cn_ip,国内
 - MATCH,其他
-rule-anchor:
-  ip:
-    type: http
-    interval: 86400
-    behavior: ipcidr
-    format: mrs
-  domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-  qcy:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: text
-  class:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
+
 rule-providers:
   private:
     type: http
@@ -419,18 +317,18 @@ rule-providers:
     behavior: domain
     format: mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs
+  EPIC游戏_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/epicgames.mrs    
   Nintendo_domain:
     type: http
     interval: 86400
     behavior: domain
     format: mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/nintendo.mrs
-  APEX英雄:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/Apex.list
   my Direct:
     type: http
     interval: 86400
@@ -443,12 +341,6 @@ rule-providers:
     behavior: classical
     format: text
     url: https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/Proxy.list
-  TiTanFall2:
-    type: http
-    interval: 86400
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/TiTanFall2.list
   bilibili_domain:
     type: http
     interval: 86400
@@ -510,10 +402,6 @@ rule-providers:
     format: mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs
 
-redir-port: 7892
-tproxy-port: 7895
-port: 7890
-socks-port: 7891
 mode: rule
 disable-keep-alive: true
 secret: xVwqmcgk
