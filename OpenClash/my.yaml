@@ -7,7 +7,7 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    url: 订阅地址
+    url: http://订阅地址
   provider2:
     type: http
     interval: 86400
@@ -15,7 +15,7 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300    
-    url: 订阅地址
+    url: http://订阅地址
     path: ./proxies/CordCloud.yaml
     exclude-filter: "(?i)(上海)|(安徽)|(江苏)"
   provider3:
@@ -25,7 +25,7 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300    
-    url: 订阅地址
+    url: http://订阅地址
 # 全局配置
 ipv6: false
 allow-lan: true
@@ -150,6 +150,7 @@ proxy-groups:
 - name: 自动选择
   type: url-test
   include-all: true
+  filter: "(?i)^(?!.*(?:直连)).*"
   tolerance: 10
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Auto.png
 - name: 全部节点
