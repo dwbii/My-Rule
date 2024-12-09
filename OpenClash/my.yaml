@@ -108,6 +108,9 @@ proxy-groups:
 - name: 游戏平台
   type: select
   proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点]
+- name: 网络游戏
+  type: select
+  proxies: [香港,游戏专用]
 - name: 国内
   type: select
   proxies: [直连,默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区]
@@ -142,7 +145,7 @@ proxy-groups:
 - name: 其它地区
   type: select
   include-all: true
-  filter: "(?i)^(?!.*(?:\U0001F1ED\U0001F1F0|\U0001F1EF\U0001F1F5|\U0001F1FA\U0001F1F8|\U0001F1F8\U0001F1EC|\U0001F1E8\U0001F1F3|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
+  filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Available.png
 - name: 自动选择
   type: url-test
@@ -156,7 +159,7 @@ proxy-groups:
 - name: 香港自动选择
   type: url-test
   include-all: true
-  filter: "(?i)港|hk|hongkong|hong kong"
+  filter: "(?i)港12|港22|港6|港G2"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/HK.png
 - name: 台湾自动选择
   type: url-test
@@ -214,6 +217,8 @@ rules:
 - RULE-SET,Nintendo_domain,默认
 - RULE-SET,my Direct,国内
 - RULE-SET,my Proxy,巴哈姆特
+- RULE-SET,APEX英雄,网络游戏
+- RULE-SET,泰坦陨落2,网络游戏
 - RULE-SET,bilibili_domain,哔哩哔哩
 - RULE-SET,bahamut_domain,巴哈姆特
 - RULE-SET,spotify_domain,默认
@@ -329,6 +334,18 @@ rule-providers:
     behavior: domain
     format: mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/nintendo.mrs
+  APEX英雄:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: text
+    url: https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/Apex.list
+  泰坦陨落2:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: text
+    url: https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/TiTanFall2.list
   my Direct:
     type: http
     interval: 86400
