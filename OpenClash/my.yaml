@@ -29,6 +29,7 @@ proxy-providers:
 # 全局配置
 ipv6: false
 allow-lan: true
+mode: rule
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -95,7 +96,7 @@ proxy-groups:
   proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,直连]
 - name: 巴哈姆特
   type: select
-  proxies: [台湾,台湾自动选择]
+  proxies: [台湾,台湾自动选择,故障转移]
 - name: YouTube
   type: select
   proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点]
@@ -195,7 +196,7 @@ proxy-groups:
 - name: 故障转移
   type: fallback
   include-all: true
-  filter: "(?i)(新加坡T|新加坡V)"
+  filter: "(?i)(台湾2|台湾4|台湾5|台湾6)"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png
 rules:
 - GEOIP,lan,直连,no-resolve
@@ -420,7 +421,6 @@ rule-providers:
     format: mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs
 
-mode: rule
 disable-keep-alive: true
 secret: xVwqmcgk
 bind-address: "*"
@@ -431,10 +431,12 @@ sniffer:
   parse-pure-ip: true
 tun:
   enable: true
-  stack: mixed
+  stack: system
   device: utun
   dns-hijack:
   - tcp://any:53
+  gso: true
+  gso-max-size: 65536
   auto-route: false
   auto-detect-interface: false
   auto-redirect: false
