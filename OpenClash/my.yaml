@@ -53,26 +53,25 @@ geox-url:
 dns:
   enable: true
   ipv6: false
+  enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
   - "*"
   - "+.lan"
   - "+.local"
-  default-nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
   proxy-server-nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
+  - https://120.53.53.53/dns-query
+  - https://223.5.5.5/dns-query
   nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
+  - https://120.53.53.53/dns-query
+  - https://223.5.5.5/dns-query
   listen: 0.0.0.0:7874
-  enhanced-mode: fake-ip
-  fallback:
-  - 1.1.1.1
-  - 1.0.0.1
-
+  nameserver-policy:
+   "rule-set:cn_domain,private_domain":
+   - https://120.53.53.53/dns-query
+   - https://223.5.5.5/dns-query
+   "rule-set:geolocation-!cn":
+   - "https://dns.cloudflare.com/dns-query"
 proxies:
 - name: 直连
   type: direct
@@ -200,7 +199,7 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png
 rules:
 - GEOIP,lan,直连,no-resolve
-- RULE-SET,private,直连
+- RULE-SET,private_domain,直连
 - RULE-SET,biliintl_domain,哔哩东南亚
 - RULE-SET,ehentai_domain,默认
 - RULE-SET,github_domain,默认
@@ -234,7 +233,7 @@ rules:
 - MATCH,其他
 
 rule-providers:
-  private:
+  private_domain:
     type: http
     interval: 86400
     behavior: domain
