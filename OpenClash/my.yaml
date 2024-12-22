@@ -7,15 +7,15 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    url: http://订阅地址
+    url: https://订阅地址1
   provider2:
     type: http
     interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 300    
-    url: http://订阅地址
+      interval: 300
+    url: https://订阅地址2
     path: ./proxies/CordCloud.yaml
     exclude-filter: "(?i)(上海)|(安徽)|(江苏)"
   provider3:
@@ -24,8 +24,8 @@ proxy-providers:
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 300    
-    url: http://订阅地址
+      interval: 300
+    url: https://订阅地址3
 # 全局配置
 ipv6: false
 allow-lan: true
@@ -53,34 +53,22 @@ geox-url:
 dns:
   enable: true
   ipv6: false
-  enhanced-mode: fake-ip
+  listen: 0.0.0.0:7874
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
   - "*"
   - "+.lan"
   - "+.local"
-  proxy-server-nameserver:
-  - https://120.53.53.53/dns-query
-  - https://223.5.5.5/dns-query
   nameserver:
-  - https://120.53.53.53/dns-query
-  - https://223.5.5.5/dns-query
-  listen: 0.0.0.0:7874
-  nameserver-policy:
-   "rule-set:cn_domain,private_domain":
-   - https://120.53.53.53/dns-query
-   - https://223.5.5.5/dns-query
-   "rule-set:geolocation-!cn":
-   - "https://dns.cloudflare.com/dns-query"
+  - tcp://127.0.0.1:5335
 proxies:
 - name: 直连
   type: direct
   udp: true
-# 策略组
 proxy-groups:
 - name: 默认
   type: select
-  proxies: [香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点,直连]
+  proxies: [香港,香港自动选择,台湾,台湾自动选择,日本,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点,全部节点,直连]
 - name: Google
   type: select
   proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点]
@@ -89,13 +77,13 @@ proxy-groups:
   proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,直连]
 - name: 哔哩哔哩
   type: select
-  proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,直连]
+  proxies: [直连,默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区]
 - name: 哔哩东南亚
   type: select
   proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,直连]
 - name: 巴哈姆特
   type: select
-  proxies: [台湾,台湾自动选择,故障转移]
+  proxies: [默认,台湾,台湾自动选择,故障转移]
 - name: YouTube
   type: select
   proxies: [默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区,自选节点]
@@ -116,7 +104,7 @@ proxy-groups:
   proxies: [直连,默认,香港,香港自动选择,台湾,台湾自动选择,日本,日本自动选择,新加坡,新加坡自动选择,美国,美国自动选择,其它地区]
 - name: 其他
   type: select
-  proxies: [默认,香港,游戏专用,全部节点]
+  proxies: [默认,香港,游戏专用,全部节点,直连]
 - name: 香港
   type: select
   include-all: true
@@ -145,7 +133,7 @@ proxy-groups:
 - name: 其它地区
   type: select
   include-all: true
-  filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
+  exclude-filter: "(?i)(港)|(台)|(日)|(新)|(美)"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/Available.png
 - name: 自动选择
   type: url-test
@@ -185,7 +173,8 @@ proxy-groups:
 - name: 游戏专用
   type: url-test
   include-all: true
-  filter: "(?i)广港专线"
+  filter: "(?i)广港专线|BGP3|BGP2|专线7"
+  exclude-filter: "(?i)(广东)|(广州)"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/HK.png
 - name: 自选节点
   type: url-test
