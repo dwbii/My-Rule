@@ -209,6 +209,7 @@ rules:
 - RULE-SET,my Proxy,巴哈姆特
 - RULE-SET,APEX英雄,网络游戏
 - RULE-SET,泰坦陨落2,网络游戏
+- RULE-SET,APEXurl,网络游戏
 - RULE-SET,bilibili_domain,哔哩哔哩
 - RULE-SET,bahamut_domain,巴哈姆特
 - RULE-SET,spotify_domain,默认
@@ -330,6 +331,12 @@ rule-providers:
     behavior: ipcidr
     format: text
     url: https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/Apex.list
+  APEXurl:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/dwbii/My-Rule/refs/heads/main/OpenClash/Rule/APEXurl.list    
   泰坦陨落2:
     type: http
     interval: 86400
