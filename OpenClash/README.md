@@ -1,1 +1,2 @@
 openclash配置文件和规则
+mosdns白名单 domain,节点域名
