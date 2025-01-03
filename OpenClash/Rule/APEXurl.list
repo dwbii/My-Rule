@@ -1,2 +1,2 @@
 DOMAIN-SUFFIX,stryder.respawn.com
-IP-CIDR,104.16.0.0/13,no-resolve
+IP-CIDR,104.16.132.229/32,no-resolve
