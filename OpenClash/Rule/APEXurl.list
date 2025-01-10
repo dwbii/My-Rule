@@ -1,1 +1,6 @@
 DOMAIN-SUFFIX,stryder.respawn.com
+DOMAIN-SUFFIX,dns.nextdns.io
+IP-CIDR,45.90.28.0/24,no-resolve
+IP-CIDR,45.90.29.0/24,no-resolve
+IP-CIDR,45.90.30.0/24,no-resolve
+IP-CIDR,45.90.31.0/24,no-resolve
