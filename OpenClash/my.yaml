@@ -188,9 +188,7 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/mini/SG.png
 rules:
 - GEOIP,lan,直连,no-resolve
-- RULE-SET,private_domain,直连
 - RULE-SET,biliintl_domain,哔哩东南亚
-- RULE-SET,ehentai_domain,默认
 - RULE-SET,github_domain,默认
 - RULE-SET,twitter_domain,默认
 - RULE-SET,youtube_domain,YouTube
@@ -223,12 +221,6 @@ rules:
 - MATCH,其他
 
 rule-providers:
-  private_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
   cn_domain:
     type: http
     interval: 86400
@@ -241,12 +233,6 @@ rule-providers:
     behavior: domain
     format: mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/biliintl.mrs
-  ehentai_domain:
-    type: http
-    interval: 86400
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.mrs
   github_domain:
     type: http
     interval: 86400
@@ -415,26 +401,3 @@ rule-providers:
     behavior: ipcidr
     format: mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs
-
-disable-keep-alive: true
-secret: xVwqmcgk
-bind-address: "*"
-external-ui: "/usr/share/openclash/ui"
-tcp-concurrent: true
-sniffer:
-  enable: true
-  parse-pure-ip: true
-tun:
-  enable: true
-  stack: system
-  device: utun
-  dns-hijack:
-  - tcp://any:53
-  gso: true
-  gso-max-size: 65536
-  auto-route: false
-  auto-detect-interface: false
-  auto-redirect: false
-  strict-route: false
-authentication:
-- Clash:aYUd8MwD
