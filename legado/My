@@ -1,46 +1,57 @@
 [
 {
-        "bookSourceGroup": "API",
-        "bookSourceName": "读书阁",
-        "bookSourceType": 0,
-        "bookSourceUrl": "http://www.lianjianxsw.com",
-        "concurrentRate": "2000",
-        "customOrder": 1,
-        "enabled": true,
-        "enabledCookieJar": false,
-        "enabledExplore": true,
-        "exploreUrl": "[{\"title\":\"全部小说\",\"url\":\"http://www.lianjianxsw.com/rankList?type=%E5%85%A8%E9%83%A8&page={{page}}&state=0\",\"style\":{\"layout_flexGrow\":0.25}},{\"title\":\"都市小说\",\"url\":\"http://www.lianjianxsw.com/rankList?type=%E9%83%BD%E5%B8%82&page={{page}}&state=0\",\"style\":{\"layout_flexGrow\":0.25}},{\"title\":\"科幻小说\",\"url\":\"http://www.lianjianxsw.com/rankList?type=%E7%A7%91%E5%B9%BB&page={{page}}&state=0\",\"style\":{\"layout_flexGrow\":0.25}},{\"title\":\"女频小说\",\"url\":\"http://www.lianjianxsw.com/rankList?type=%E5%A5%B3%E9%A2%91&page={{page}}&state=0\",\"style\":{\"layout_flexGrow\":0.25}},{\"title\":\"历史小说\",\"url\":\"http://www.lianjianxsw.com/rankList?type=%E5%8E%86%E5%8F%B2&page={{page}}&state=0\",\"style\":{\"layout_flexGrow\":0.25}},{\"title\":\"网游小说\",\"url\":\"http://www.lianjianxsw.com/rankList?type=%E7%BD%91%E6%B8%B8&page={{page}}&state=0\",\"style\":{\"layout_flexGrow\":0.25}},{\"title\":\"玄幻小说\",\"url\":\"http://www.lianjianxsw.com/rankList?type=%E7%8E%84%E5%B9%BB&page={{page}}&state=0\",\"style\":{\"layout_flexGrow\":0.25}},{\"title\":\"其他小说\",\"url\":\"http://www.lianjianxsw.com/rankList?type=%E5%85%B6%E4%BB%96&page={{page}}&state=0\",\"style\":{\"layout_flexGrow\":0.25}},{\"title\":\"修真小说\",\"url\":\"http://www.lianjianxsw.com/rankList?type=%E4%BF%AE%E7%9C%9F&page={{page}}&state=0\",\"style\":{\"layout_flexGrow\":0.25}}]",
-        "lastUpdateTime": 1733994626043,
-        "respondTime": 120941,
-        "ruleBookInfo": {
-            "author": "$.author",
-            "coverUrl": "/pic/{{$._id}}.jpg",
-            "init": "$.data.book",
-            "intro": "$.intro",
-            "kind": "$.updatetime&&$.type&&$.update_state",
-            "lastChapter": "$.last_chapter_name",
-            "name": "$.name",
-            "tocUrl": "/getCataLogs?bookid={{$._id}}&page=1&limit={{$.total_num}}"
-        },
-        "ruleContent": {
-            "content": "data.chapterInfo.content<js>java.aesBase64DecodeToString(result,\"6CE93717FBEA3E4F\",\"AES/CBC/NoPadding\",\"6CE93717FBEA3E4F\")</js>##\\#\\#\\#\\$\\$\\$##<br>"
-        },
-        "ruleExplore": {},
-        "ruleSearch": {
-            "author": "$.author",
-            "bookList": "$.data",
-            "bookUrl": "/bookInfo?bookid={{$._id}}",
-            "coverUrl": "/pic/{{$._id}}.jpg",
-            "intro": "$.intro",
-            "name": "$.name@put:{bid:_id}"
-        },
-        "ruleToc": {
-            "chapterList": "$.data.list[*]",
-            "chapterName": "$.name",
-            "chapterUrl": "/getContent?bookid=@get:{bid}&chapterid={{$._id}}"
-        },
-        "searchUrl": "@js:\noption={\"method\":\"POST\",\"body\":{\"keyword\":key}}\n\"http://www.lianjianxsw.com/\"+\"search,\"+JSON.stringify(option)",
-        "weight": 50
+    "bookSourceComment": "\/\/2025.5.3 ◎夜泽川◎",
+    "bookSourceGroup": "自制,网络",
+    "bookSourceName": "笔趣阁ail",
+    "bookSourceType": 0,
+    "bookSourceUrl": "http:\/\/www.ailcai.com",
+    "customOrder": 637,
+    "enabled": true,
+    "enabledCookieJar": true,
+    "enabledExplore": true,
+    "exploreUrl": "@js:\nvar result = [];\nvar push = (title, url, size) => result.push({\n  title: title,\n  url: url,\n  style: {\n    layout_flexGrow: 1,\n    layout_flexBasisPercent: size\n  }\n});\nvar tagul = org.jsoup.Jsoup.parse(java.ajax(source.key + \"\/category\/\")).select('.module li a');\nfor (i in tagul) {\n    push(tagul[i].select('h4').text(),`\/e\/extend\/more\/lsmore.php?page={{page}}&line=10&cl=${Number(i)+1}`,0.45);\n}\nJSON.stringify(result);",
+    "header": "{\"User-Agent\":\"Mozilla\/5.0 (Linux; Android 9) Mobile Safari\/537.36\"}",
+    "lastUpdateTime": "1746282082600",
+    "respondTime": 180000,
+    "ruleBookInfo": {
+        "author": "@get:{a}",
+        "canReName": "",
+        "coverUrl": "@get:{i}",
+        "init": "@put:{n:\"[property$=book_name]@content\",\na:\"[property$=author]@content\",\nt:\"[property~=category|status]@content\",\nl:\"[property$=latest_chapter_name]@content\",\ni:\"[property$=image]@content\",\no:\"[property$=description]@content\",\ng:\"[property$=update_time]@content\"\n}\n<js>src<\/js>",
+        "intro": "@get:{o}",
+        "kind": "@get:{t}",
+        "lastChapter": "@get:{l}◎@get:{g}",
+        "name": "@get:{n}",
+        "tocUrl": "@js:\nvar id = baseUrl.match(\/(\\d+).*?$\/)[1];\nvar sr = java.ajax(\"http:\/\/www.ailcai.com\" + org.jsoup.Jsoup.parse(src).select('.page_main script')[1].attr('src'));\nresult = sr.match(\/url: \"([^\"]+)\/)[1] + id + \"&pageNum=0&dz=asc\";"
+    },
+    "ruleContent": {
+        "content": "#text@html"
+    },
+    "ruleExplore": {
+        "author": "$.writer",
+        "bookList": "$.[*]",
+        "bookUrl": "$.url",
+        "coverUrl": "$.pic",
+        "intro": "$.smalltext",
+        "kind": "$.date",
+        "name": "$.title"
+    },
+    "ruleSearch": {
+        "author": ".book-author@text",
+        "bookList": ".s-nv-list",
+        "bookUrl": "a@href",
+        "intro": "p@text",
+        "kind": ".green@text",
+        "name": ".title@text"
+    },
+    "ruleToc": {
+        "chapterList": "$.list[*]",
+        "chapterName": "$.title",
+        "chapterUrl": "$.pic",
+        "nextTocUrl": "@js:\nvar pages = JSON.parse(src).totalPage\nvar pagesList = [];\nfor (let i = 1; i < pages; i++) {\npagesList.push(baseUrl.replace(\"pageNum=0\",`pageNum=${i}`));\n}\npagesList;"
+    },
+    "searchUrl": "\/e\/search\/index.php,{\n  \"body\": \"show=title&tempid=1&keyboard={{key}}\",\n  \"method\": \"POST\"\n}",
+    "weight": 0
 },
 {
     "bookSourceComment": "套用搜索规则",
