@@ -103,50 +103,59 @@
     "weight": 0
 },
 {
-        "bookSourceComment": "/* \n11.28 by:遇知  制作\n11.29 by:遇知  完善，添加换源选择，通过设置源变量进行换源。\n11.30 by:遇知  优化，更改换源设置，通过设置书籍变量进行换源。\n2024.01.08 重构代码。\n */\n/* https://novelapi.qwezxc4.cn/h5/download */\t\n/*\n域名::https://novelapi-tn.tttxtt.com/api/config-hosts\n备用：\nhttps://novel-api.xiaoppkk.com\nhttps://novel-api.elklk.cn\nhttps://novel-api.xiaoshuottaa.com\nhttps://novel-api.xiaoxiaommkk.com\nhttps://novelapi-tn.tttxtt.com\nhttps://novelapi-hw.tttxtt.com\nhttps://novelapi-tn.kpkpo.com\nhttps://novelapi.kpkpo.com\nhttps://novelapi.qwezxc4.cn\nhttps://nov-api.chiyantu.com\nhttps://novelapp.pvlmnez.cn\n\t\n//分类\n[[\"周\",\"week\"],[\"月\",\"month\"],[\"总\",\"all\"]];\n//加上请求头数据会加密。\n@js:\nJSON.stringify({\t\t\n\t\"Accept-Language\":\"zh-CN,zh;q=0.8\",\n\t\"versionCode\":\"999\",\n\t\"qd\":\"baidu3_2\",\n\t\"SYS\":\"android\",\t\n\t\"Connection\":\"Keep-Alive\",\n  \"User-Agent\":\"Mozilla/5.0 (Linux; U; Android 7.1.2; zh-cn; 10X Build/N2G47H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30\"\n})\n*/\n//解密方法：\nfunction decode(str) {\nif(String(str).search(/JP2\\/W5V/)>=0){\nData=String(str).substring(3,String(str).length-4);\nstr=java.aesBase64DecodeToString(Data,\"6CB1E21E\",\"DES/CBC/PKCS5Padding\",\"1F0FB845\");}\nelse str=str;\nreturn str;\n\t}",
-        "bookSourceGroup": "API",
-        "bookSourceName": "笔阅读器",
-        "bookSourceType": 0,
-        "bookSourceUrl": "https://novelapi.kpkpo.com##",
-        "customOrder": 6,
-        "enabled": true,
-        "enabledCookieJar": false,
-        "enabledExplore": true,
-        "exploreUrl": "@js:\nsort=[];\npush=(title,url,type1,type2)=>sort.push({\n\t\ttitle: title,\n\t\turl: url,\n\t\tstyle: {\n\t\t\t\tlayout_flexGrow: type1,\n\t\t\t\tlayout_flexBasisPercent: type2\n\t\t\t}\n\t});\n\tpush(\"推荐\", null, 1, 1);\ntj = \t[[\"全网大热\",\"hot\"],[\"人气精品\",\"fan\"],[\"猜你喜欢\",\"like\"],[\"抖音精选\",\"douyin\"],[\"微信精选\",\"weixin\"]];\n\t  tj.map(([title,uri],index)=>{\n\t    url= `/cdn/library/channelRankList/3/${uri}/{{page}}.html`;\n\tif(index+1 <= tj.length - tj.length%2)\n\t\t\t {\tpush(title, url, 1, 0.4);}\n\t\t\t\telse{ push(title, url, 0, 0.45);}\n   });  \n   \n\tpush(\"推荐一\", `/api/library-channel?channel=1&page={{page}}`, 1, 0.25);\n\tpush(\"推荐二\", `/api/library-channel?channel=2&page={{page}}`, 1, 0.25);\n\tpush(\"大热榜\", `/api/library-channel?channel=3&page={{page}}`, 1, 0.25);\n\tpush(\"月票榜\", `/api/library-channel?channel=4&page={{page}}`, 1, 0.25);\n\t\n\t\nbd = \t[[\"最热\",\"zuire\"],[\"最新\",\"xinshu\"],[\"推荐\",\"tuijian\"],[\"完结\",\"wanjie\"],[\"评分\",\"pingfen\"],[\"收藏\",\"shoucang\"]];\n\n\t\t[[\"男频\",\"1\"],[\"女频\",\"2\"]].map([title,gender]=>{\n\tpush(title+\"❤榜单\", null, 1, 1);\n\t  bd.map(([title,uri],index)=>{\n\t    url= `/cdn/category/rankList/${gender}/0/${uri}/all/{{page}}.html`;\n\tif(index+1 <= bd.length - bd.length%3)\n\t\t\t {\tpush(title, url, 1, 0.25);}\n\t\t\t\telse{ push(title, url, 0, 0.29);}\n   });  \n\t});\n\t\n\t\n\tfunction fl(i) {\t\t\n\t\t\tburl=source.getKey().match(/([^#]*)/)[1];\n\t\t\turl= burl+`/cdn/category/tags/${i}.html`;\n     result=java.ajax(url);\n     eval(String(source.bookSourceComment));\n     return  D=JSON.parse(decode(result)).result.list; \t\t\n\t\t}\n\t\t\n\n[[\"分类\",fl(1)[0].list],[\"男频—主题\",fl(1)[1].list],[\"女频—主题\",fl(2)[1].list]].map([title,category]=>{\n\tpush(title, null, 1, 1);\n category.map(($)=>{\t   \t\n\t    title=$.name;\n     \tid=$.id;\n   if($.sex){\n     \t\turl= `/cdn/category/rankList/1/${id}/zuire/all/{{page}}.html`;}\n\t  else{\n\t      \turl= `/cdn/category/tagsRankList/${id}/tuijian/{{page}}.html`;\t}\t\n\tpush(title, url, 1, 0.25);\n        });\n  });\n\t\nJSON.stringify(sort);",
-        "header": "@js:\nJSON.stringify({\t\t\n\t\"Accept-Language\":\"zh-CN,zh;q=0.8\",\n\t\"versionCode\":\"999\",\n\t\"qd\":\"baidu3_2\",\n\t\"SYS\":\"android\",\t\n\t\"Connection\":\"Keep-Alive\",\n  \"User-Agent\":\"Mozilla/5.0 (Linux; U; Android 7.1.2; zh-cn; 10X Build/N2G47H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30\"\n})",
-        "lastUpdateTime": 1721187429912,
-        "respondTime": 1025,
-        "ruleBookInfo": {
-            "author": "$.author",
-            "coverUrl": "$.icon",
-            "init": "<js>\neval(String(source.bookSourceComment));\nresult = JSON.parse(decode(result)).result.book;\n//result = JSON.parse(JSON.stringify(result));\n\nburl=source.getKey().match(/([^#]*)/)[1];\nid = result.id;\n\nsource_url= burl + `/cdn/book/source/${id}.html`;\n$ =java.ajax(source_url);\neval(String(source.bookSourceComment));\n$ = JSON.parse(decode($)).result.list;\nn=0;//默认选择源\nv=String(book.getVariable(\"custom\"));\nx=v.match(/^\\d+$/)?v:n;\nx=parseInt(x)<$.length?x:n;\n\nresult.new_title = $[x].new_title;\n\nif($.length>1){\n\t\ty = '\\n📌使用说明： 根据序号设置书籍变量来切换来源(默认0)，若书籍ID为0 (9x除外)，则为第三方网站。\\n🎯当前源：序号🔺'+x+'🔻【'+$[x].name+'】'+(x==0?' (默认)':'');\nfor(i in $){\n\t\ty += '\\n❤序号🔺'+i+'🔻【'+$[i].name+'】\\n书籍ID：'+$[i].internal_book_id+'\\n选用率：'+$[i].show_text+' \\n源地址： '+$[i].chapter_list_url+'\\n最新章节： '+$[i].new_title;\n\t}\nresult.description += y\n}\n\ntry{ book_id=$[x].internal_book_id; }\n catch(e) { book_id = id;}\n \n if(x==0&&book_id==0){ \n \tbook_id = id;\n \tjava.put('book_id',book_id);\n \tresult.tocUrl = `/cdn/book/chapterList/${book_id}.html`;\n }\nelse if(x!=0&&book_id==0) {\n\t tUrl = $[x].chapter_list_url;\n\t result.tocUrl = tUrl+\",\" + JSON.stringify({\"headers\":{\"Referer\": tUrl}});\n\t}\nelse if(book_id!=0){ \n\tjava.put('book_id',book_id);\n\t\tresult.tocUrl = `/cdn/book/chapterList/${book_id}.html`;\n\t}\n\nresult = JSON.stringify(result);\n</js>",
-            "intro": "$.description\n##(^|[。！？]+[”」）】]?)##$1<br>",
-            "kind": "{{$.category}}\n{{java.getString('$.is_finish')=='1'?'完结':'连载'}}\n{{r=String(Math.round(java.getString('$.star'))/10);r=='0'?'':r+ '分'}}\n{{java.timeFormatUTC(java.getString('$.mtime')*1000,'yyyy-MM-dd',8)}}",
-            "lastChapter": "$.new_title<js>result</js>@@span.1@text##:",
-            "name": "$.name",
-            "tocUrl": "$.tocUrl"
-        },
-        "ruleContent": {
-            "content": "<js>\nif(baseUrl.match(/cdn\\/book\\/content/)){\neval(String(source.bookSourceComment));\ncontent = JSON.parse(decode(result)).result.info.content;\n}else{content = java.getElement(\"#content\");}\n</js>"
-        },
-        "ruleExplore": {},
-        "ruleSearch": {
-            "author": "$.author",
-            "bookList": "<js>\neval(String(source.bookSourceComment));\ndecode(result);\n</js>\n$.result.list||$.result..list[*]",
-            "bookUrl": "/api/book-info?id={{$.id}}&source_id=1",
-            "checkKeyWord": "长生志异，开局菜市口被斩首",
-            "coverUrl": "$.icon##qwezxc4\\.cn##kpkpo.com",
-            "intro": "$.description",
-            "kind": "{{$.category}}\n{{r=String(Math.round(java.getString('$.star'))/10);r=='0'?'':r+ '分'}}",
-            "name": "$.name"
-        },
-        "ruleToc": {
-            "chapterList": "<js>\nif(baseUrl.match(/cdn\\/book\\/chapterList/)){\neval(String(source.bookSourceComment));\ndata = JSON.parse(decode(result)).result.list;\nlength = data.length;\nchapterList = [];\nfor(var i = 0; i < length; i ++){\n\tname = \"🏮〖\"+data[i].name+\"〗🏮\";\n\tchapterList.push({\n\t\t\ttext: name,\n\t\t\thref: null,\n\t\t\tvolume: true\n\t})\t\n\tdata[i].list.forEach(($) => {\t\t\t\t\t\t\n\t\ttext = $.name;\n\t\tid = $.id;\n\t\tbook_id = java.get('book_id');\n\t\t//book_id = baseUrl.match(/\\/(\\d+).html/)[1];\n    href = `/cdn/book/content/${book_id}/${id}.html`;   \n    chapterList.push({\n\t\t\ttext: text,\n\t\t\thref: href\t\n\t})\n\t})\t\n\t}\nchapterList\n}\nelse{\n\tchapterList = [];\n\tdatas = java.getElement(\"dd@a\").toArray();\n\t//java.log(JSON.stringify(chapterList));\n\tfor (var i = 0; i < datas.length; i++) {\n    text = datas[i].text();\n\t\t\thre = baseUrl.split(',')[0]+datas[i].attr(\"href\");\n\t\t\td=String(hre).split('\\/');\nlist=[];\nd.forEach((s, index)=>{ \n\t if (list.indexOf(s) == -1) {\n \t   list.push(s);      }\n\t\t\n\t\t});\n\t\thref = list.toString().replace(/,/g,\"/\");\n\t\t\t\t\t\t\n     chapterList.push({\n\t\t \t text: text,\n\t\t  \t href: href\t\n      \t})            \n   };\n\tchapterList\n\t}\n</js>",
-            "chapterName": "text",
-            "chapterUrl": "href",
-            "isVolume": "volume"
-        },
-        "searchUrl": "/api/category-search?name={{key}}",
-        "weight": 50
+    "bookSourceComment": "\/\/无名25.05.02修，需要魔法。\n\/\/24.12",
+    "bookSourceGroup": "源社区,飞机",
+    "bookSourceName": "和圖書",
+    "bookSourceType": 0,
+    "bookSourceUrl": "https:\/\/www.hetubook.com",
+    "bookUrlPattern": "",
+    "customOrder": 0,
+    "enabled": true,
+    "enabledCookieJar": true,
+    "enabledExplore": true,
+    "exploreUrl": "@js: var result = [];\njava.toast(\"🔥动态获取发现中……\");\nvar push=(title,url,size)=>result.push({\n  \t\"title\": title,\n  \t\"url\": url,\n  \t\"style\": {\n   \"layout_flexGrow\": 1,\n   \"layout_flexBasisPercent\": size\n   }\n });\nvar tag = java.ajax(\"https:\/\/www.hetubook.com\/book\/index.php\")\n\nif(tag.match(\/Just a moment\/)){\n\txb=\"https:\/\/www.hetubook.com\/book\/index.php\"+\",\"+JSON.stringify({\n\t\t\"headers\":{\n  \"User-Agent\": \"Mozilla\/5.0 (Linux; Android 14; 2312DRAABC) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/110.0.0.0 Mobile Safari\/537.36\",\n  \"webView\": true\n}})\n\tcookie.removeCookie(source.bookSourceUrl)\njava.startBrowserAwait(xb,\"www.hetubook.com\")\ntag=java.ajax(xb)\n\t}\nif (tag) {\nb=org.jsoup.Jsoup.parse(tag).select(\".catalog a\");\npush(\"全部\",null,1)\n    for(i in b){\n        title=b[i].text()\n        url=b[i].attr(\"href\")\n        size=0.25\n        if (url.endsWith(\"index.php\")) {\n            url=\"\/book\/\"+url+\"?page=1\"\n            url=String(url).replace(\"1\",\"{{page}}\")\n            push(title,url,size)\n        } else {\n            url=\"\/book\/\"+url+\"&page=1\"\n            url=String(url).replace(\"1\",\"{{page}}\")\n            push(title,url,size)\n    }};\npush(\"已完結\",null,1)\n    for(i2 in b){\n        title=b[i2].text()\n        url=b[i2].attr(\"href\")\n        size=0.25\n        if (url.endsWith(\"index.php\")) {\n            url=\"\/book\/\"+url+\"?state=2&page=1\"\n            url=String(url).replace(\"1\",\"{{page}}\")\n            push(title,url,size)\n        } else {\n            url=\"\/book\/\"+url+\"&state=2&page=1\"\n            url=String(url).replace(\"1\",\"{{page}}\")\n            push(title,url,size)\n    }};\npush(\"連載中\",null,1)\n    for(i in b){\n        title=b[i].text()\n        url=b[i].attr(\"href\")\n        size=0.25\n        if (url.endsWith(\"index.php\")) {\n            url=\"\/book\/\"+url+\"?state=1&page=1\"\n            url=String(url).replace(\/1$\/,\"{{page}}\")\n            push(title,url,size)\n        } else {\n            url=\"\/book\/\"+url+\"&state=1&page=1\"\n            url=String(url).replace(\/1$\/,\"{{page}}\")\n            push(title,url,size)\n    }}}\nJSON.stringify(result);",
+    "header": "{\"User-Agent\": \"Mozilla\/5.0 (Linux; Android 14; 2312DRAABC) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/132.0.0.0 Mobile Safari\/537.36\",\n\"Referer\":\"https:\/\/www.hetubook.com\"}",
+    "lastUpdateTime": "1746118728064",
+    "respondTime": 180000,
+    "ruleBookInfo": {
+        "author": "a[0]@text@js:java.t2s(result)",
+        "coverUrl": "img@src",
+        "init": "id.left",
+        "intro": ".intro@text@js:java.t2s(result)",
+        "kind": "div:containsOwn(類別：)@text##類別：@js:java.t2s(result)",
+        "lastChapter": "id.dir@a[-1]@text@js:java.t2s(result)",
+        "name": "h2@text@js:java.t2s(result)",
+        "tocUrl": "",
+        "wordCount": ".book_info.finish > div:nth-of-type(3)@text##字數：@js:java.t2s(result)"
+    },
+    "ruleContent": {
+        "content": "\/\/div[@id='content']\/div\/text()@js:java.t2s(result)",
+        "webJs": ""
+    },
+    "ruleExplore": {
+        "author": "span[1]@text@js:java.t2s(result)",
+        "bookList": "<js>\nif(result.match(\/Just a moment\/)){\n\txb=(baseUrl)+\",\"+JSON.stringify({\n\t\t\"headers\":{\n  \"User-Agent\": \"Mozilla\/5.0 (Linux; Android 14; 2312DRAABC) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/132.0.0.0 Mobile Safari\/537.36\",\n  \"webView\": true\n}})\n\tcookie.removeCookie(source.bookSourceUrl)\njava.startBrowserAwait(xb,\"www.hetubook.com\")\nresult=java.ajax(xb)\n\t}\n\tresult\n<\/js>\nid.list@li",
+        "bookUrl": ".name@a@href",
+        "coverUrl": "img@src",
+        "intro": ".intro@text@js:java.t2s(result)",
+        "kind": "span[0]@text@js:java.t2s(result)",
+        "name": ".name@text@js:java.t2s(result)"
+    },
+    "ruleSearch": {
+        "author": "span[0]@text##\/|\/@js:java.t2s(result)",
+        "bookList": "<js>\nif(result.match(\/Just a moment\/)){\nvar x=java.get(\"url\")\ncookie.removeCookie(source.bookSourceUrl)\njava.startBrowserAwait(x,\"www.hetubook.com\")\nresult=java.ajax(x)\n\t}\n\tresult\n<\/js>\n.list@dd",
+        "bookUrl": "a[1]@href",
+        "checkKeyWord": "我的",
+        "coverUrl": "img@src",
+        "intro": ".intro@text@js:java.t2s(result)",
+        "name": "a[1]@text@js:java.t2s(result)"
+    },
+    "ruleToc": {
+        "chapterList": "id.dir@dd@a",
+        "chapterName": "text@js:java.t2s(result)",
+        "chapterUrl": "href##$##,\n{\"webView\":true}"
+    },
+    "searchUrl": "@js:\njava.put(\"url\",String(source.bookSourceUrl+\"\/search\/?keyword=\"+key+\",\"+JSON.stringify({\n\t\t\"headers\":{\n\t\t\t  \"User-Agent\": \"Mozilla\/5.0 (Linux; Android 14; 2312DRAABC) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/132.0.0.0 Mobile Safari\/537.36\",\n\t\t\t\"Referer\":\"https:\/\/www.hetubook.com\/search\/?keyword=%E6%88%91%E7%9A%84\"\n\t\t\t  }\n})))",
+    "weight": 0
   }
 ]
