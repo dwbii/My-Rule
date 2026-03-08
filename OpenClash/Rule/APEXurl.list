@@ -1,4 +1,5 @@
 DOMAIN-SUFFIX,stryder.respawn.com
+DOMAIN-SUFFIX,qos-nlb-eu-central-1-a7e1db11a0d0e214.elb.eu-central-1.amazonaws.com
 DOMAIN-SUFFIX,us-west-2.amazonaws.com
 DOMAIN-SUFFIX,me-south-1.amazonaws.com
 DOMAIN-SUFFIX,qos-nlb-us-east-1-41e76630d65b6195.elb.us-east-1.amazonaws.com
